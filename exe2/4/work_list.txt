@@ -20,7 +20,7 @@ kill program - ^c
 ./mync -e "./ttt 123456789" -o TCPS9876           || nc 127.0.0.1 9876
 ./mync -e "./ttt 123456789" -o TCPC127.0.0.1,9876 || nc -l -p 9876
 ./mync -e "./ttt 123456789" -o UDPC127.0.0.1,9876 || nc -u -l -p 9876
-./mync -e "./ttt 123456789" -o UDPC127.0.0.1,9876 -t 10 || nc -u 127.0.0.1 5050
+./mync -e "./ttt 123456789" -o UDPC127.0.0.1,5050 -t 10 || nc -u -l -p 5050
 ./mync -e "./ttt 123456789" -o UDSSShoi1          || nc -U hoi1
 ./mync -e "./ttt 123456789" -o UDSCShoi1          || nc -lU hoi1
 
@@ -28,8 +28,6 @@ kill program - ^c
 
 ./mync -e "./ttt 123456789" -b TCPS9876           || nc 127.0.0.1 9876
 ./mync -e "./ttt 123456789" -b TCPC127.0.0.1,9876 || nc -l -p 9876
-./mync -e "./ttt 123456789" -b UDPS9876           || nc -u 127.0.0.1 9876 + CLIENT sey hello.
-./mync -e "./ttt 123456789" -b UDPC127.0.0.1,9876 || nc -u -l -p 9876
 ./mync -e "./ttt 123456789" -b UDSSShoi1          || nc -U hoi1
 ./mync -e "./ttt 123456789" -b UDSCShoi1          || nc -lU hoi1
 
@@ -38,8 +36,9 @@ kill program - ^c
 ./mync -e "./ttt 123456789" -i TCPS9876 -o TCPC127.0.0.1,9875 || nc 127.0.0.1 9876 , nc -l -p 9875
 ./mync -e "./ttt 123456789" -i TCPC127.0.0.1,9875 -o TCPS9876 || nc 127.0.0.1 9876 , nc -l -p 9875
 ./mync -e "./ttt 123456789" -i UDPS9876 -o UDPC127.0.0.1,9875 || nc -u 127.0.0.1 9876 , nc -u -l -p 9875
-./mync -e "./ttt 123456789" -i UDPC127.0.0.1,9875 -o UDPS9876 || nc -u 127.0.0.1 9876 , nc -u -l -p 9875 the -o need to send ack, because client is connecting to him
 
+
+//
 ./mync -e "./ttt 123456789" -i UDPS9876 -o TCPC127.0.0.1,9875 || nc -u 127.0.0.1 9876 , nc -l -p 9875
 ./mync -e "./ttt 123456789" -i UDPC127.0.0.1,9875 -o TCPS9876 || nc 127.0.0.1 9876 , nc -u -l -p 9875
 
