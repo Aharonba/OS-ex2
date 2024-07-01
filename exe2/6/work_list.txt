@@ -1,0 +1,56 @@
+
+
+Representation on the board:
+computer - 2
+user - 1
+
+
+**Server should only support input and client should only support output**
+
+
+Examples for running the code:
+
+## -e -i ##
+
+./mync -e "./ttt 123456789" -i UDSSS          || nc -U "/tmp/my_unique_socket"
+./mync -e "./ttt 123456789" -i UDSSD          || nc -Uu "/tmp/my_unique_socket"
+
+
+## -e -o ##
+./mync -e "./ttt 123456789" -o UDSCS          || nc -lU /tmp/my_unique_socket
+./mync -e "./ttt 123456789" -o UDSCD          || (if needed: rm -f /tmp/my_unique_socket) socat UNIX-RECVFROM:/tmp/my_unique_socket,reuseaddr,fork -
+
+
+//
+
+Terminal activation order pattern The following commands:
+
+Second command ||  First command, Third command
+
+## -e -i -o ##
+./mync -e "./ttt 123456789" -i UDSSS -o TCPC127.0.0.1,9876 ||  *first* -  nc -l -p 9876 , nc -U "/tmp/my_unique_socket"
+./mync -e "./ttt 123456789" -i UDSSD -o UDPC127.0.0.1,9875 ||  *first* -  nc -u -l -p 9875 , nc -Uu "/tmp/my_unique_socket"
+
+//
+
+
+
+## -i ##
+./mync -i UDSSS          || nc -U "/tmp/my_unique_socket"
+./mync -i UDSSD          || nc -Uu "/tmp/my_unique_socket"
+
+
+## -o ##
+./mync -o UDSCS          || nc -lU /tmp/my_unique_socket
+./mync -o UDSCD          || (if needed: rm -f /tmp/my_unique_socket) socat UNIX-RECVFROM:/tmp/my_unique_socket,reuseaddr,fork -
+
+
+Terminal activation order pattern The following commands:
+
+Second command ||  First command, Third command
+
+## -i -o ##
+./mync -i UDSSS -o TCPC127.0.0.1,9876 ||  *first* -  nc -l -p 9876 , nc -U "/tmp/my_unique_socket"
+./mync -i UDSSD -o UDPC127.0.0.1,9875 ||  *first* -  nc -u -l -p 9875 ,nc -Uu "/tmp/my_unique_socket"
+
+

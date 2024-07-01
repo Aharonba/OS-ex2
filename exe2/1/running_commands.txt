@@ -1,0 +1,15 @@
+Representation on the board:
+computer - 2
+user - 1
+
+Examples for running the code:
+./ttt "123456789"
+./ttt "134679258"
+./ttt "987654321"
+
+Examples of running the code and getting an error:
+./ttt "113456789"
+./ttt "123056789"
+./ttt "12345"
+./ttt 
+

@@ -1,0 +1,31 @@
+Representation on the board:
+computer - 2
+user - 1
+
+Examples for running the code:
+
+## -e -i ##
+
+./mync -e "./ttt 123456789" -i TCPS9876           || nc 127.0.0.1 9876
+./mync -e "./ttt 123456789" -i TCPC127.0.0.1,9876 || nc -l -p 9876
+
+
+## -e -o ##
+./mync -e "./ttt 123456789" -o TCPS9876           || nc 127.0.0.1 9876
+./mync -e "./ttt 123456789" -o TCPC127.0.0.1,9876 || nc -l -p 9876
+
+## -e -b ##
+./mync -e "./ttt 123456789" -b TCPS9876           || nc 127.0.0.1 9876
+./mync -e "./ttt 123456789" -b TCPC127.0.0.1,9876 || nc -l -p 9876
+
+
+Terminal activation order pattern The following commands:
+
+Second command || Third command , First command
+
+
+## -e -i -o ##
+./mync -e "./ttt 123456789" -i TCPS9876 -o TCPC127.0.0.1,9875 || nc 127.0.0.1 9876 , nc -l -p 9875 
+./mync -e "./ttt 123456789" -i TCPC127.0.0.1,9875 -o TCPS9876 || nc 127.0.0.1 9876 , nc -l -p 9875
+
+

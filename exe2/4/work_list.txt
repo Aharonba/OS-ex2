@@ -1,0 +1,41 @@
+Representation on the board:
+computer - 2
+user - 1
+
+**Server should only support input and client should only support input**
+
+
+Examples for running the code:
+
+## -e -i ##
+
+./mync -e "./ttt 123456789" -i UDPS5060           || nc -u 127.0.0.1 5060
+./mync -e "./ttt 123456789" -i UDPS5050 -t 10     || nc -u 127.0.0.1 5050
+
+## -e -o ##
+./mync -e "./ttt 123456789" -o UDPC127.0.0.1,9876 || nc -u -l -p 9876
+./mync -e "./ttt 123456789" -o UDPC127.0.0.1,5050 -t 10 || nc -u -l -p 5050
+
+//
+
+Terminal activation order pattern The following commands:
+
+Second command || Third command , First command
+
+## -e -i -o ##
+./mync -e "./ttt 123456789" -i UDPS9876 -o TCPC127.0.0.1,9875 || nc -u 127.0.0.1 9876 , nc -l -p 9875
+
+//
+
+
+## -i ##
+
+./mync -i UDPS9876           || nc -u localhost 9876
+
+
+## -o ##
+./mync  -o UDPC127.0.0.1,9876 || nc -u -l -p 9876
+
+
+## -i -o ##
+./mync -i UDPS9876 -o TCPC127.0.0.1,9875 || nc -u localhost 9876 , nc -l -p 9875

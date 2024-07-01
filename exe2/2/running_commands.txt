@@ -1,0 +1,21 @@
+Representation on the board:
+computer - 2
+user - 1
+
+Examples for running the code:
+
+./mync -e "./ttt 134679258"
+./mync -e "./ttt 123456789"
+./mync -e "./ttt 987654321"
+
+
+
+Examples of running the code and getting an error:
+
+./mync -e "./ttt 113456789"
+./mync -e "./ttt 123056789"
+./mync -e "./ttt 123"
+./mync -e "./ttt 123056789 aa"
+
+
+
